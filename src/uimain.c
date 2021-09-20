@@ -13,5 +13,12 @@ int main()
     printf("%s\n", userIn);
   }
 
+  space_char("s");
+  space_char(" ");
+
+  non_space_char("s");
+  non_space_char(" ");
+
   return 0;
+  
 }
