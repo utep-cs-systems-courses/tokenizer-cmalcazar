@@ -85,7 +85,40 @@ int count_words(char *str)
 
 char copy_strings(char *intStr, short len)
 {
+  char *copy = malloc(len+1*sizeOf(char));
 
+  int i = 0;
+
+  for (i = 0; i < len; i++)
+    {
+      copy[i] = intStr[i];
+    }
+
+  copy[i] = '\0';
+  return copy;
+}
+
+ char **tokenize(char *s)
+ {
+
+
+ }
+
+
+ char print_tokens(char**)
+ {
+
+
+
+ }
+
+
+ void free_tokens(char**)
+ {
+
+
+ }
+ 
 
 }
 
