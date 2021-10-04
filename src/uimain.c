@@ -1,5 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include "tokenizer.h"
+#include "history.h"
 
 /*simple ui that prints what user inputs*/
 int main()
