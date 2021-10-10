@@ -1,33 +1,40 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "history.h"
+#include "tokenizer.h"
 
-
-List *init_history()
+List* init_history()
 {
-  List *historyList = malloc(sizeof(HistoryList));
-  historyList ->root = NULL;
-
-  return historyList;
+  List *history;
+  history = (List*)  malloc(sizeof(List));
+  history ->root = NULL;
+  return history;
 }
 
-void add_history(List *list,char *str)
+void add_history(List* list,char* str)
 {
-  Item *current = list->root;
-  Item *newNode = (Item*) malloc(sizeof(Item));
-  newNode->next = NULL;
-
-  while (temp->next != NULL)
-    {
-      temp = temp->next;
-    }
-  temp->next = add;
-  temp->next->id = temp->id + 1;
+  Item *new = (Item*) malloc(sizeof(Item));
+  
+  if (list->root == NULL){
+    new->id = 1;
+    list->root = new;
+  }
+  else {
+    Item *currItem = list->root;
+    while(currItem->next != NULL)
+      {
+	currItem = currItem->next;
+      }
+    new->id = currItem->id + 1;
+    currItem->next = new;
+  }
+  new->str = str;
+  new->next = NULL;
 }
 
-char *get_history(List *historyList, int id)
+char *get_history(List *history, int id)
 {
-  Item *current = historyList->root;
+  Item *current = history->root;
 
   while (current != 0)
     {
@@ -41,9 +48,9 @@ char *get_history(List *historyList, int id)
 
 
 
-void print_history(List *historyList)
+void print_history(List *history)
 {
-  Item *current = historyList->root;
+  Item *current = history->root;
 
   while (current != NULL)
     {
