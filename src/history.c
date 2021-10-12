@@ -50,11 +50,11 @@ char *get_history(List *history, int id)
 
 void print_history(List *history)
 {
-  Item *current = history->root;
+  Item* current = history->root;
 
   while (current != NULL)
     {
-      printf("%s\n", current->str);
+      printf("History item [%d]: %s \n", current->id, current->str);
       current = current->next;
     }
 }

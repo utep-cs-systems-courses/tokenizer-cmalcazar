@@ -1,7 +1,6 @@
 #ifndef _TOKENIZER_
 #define _TOKENIZER_
 
-
 /* Return true (non-zero) if c is a whitespace characer
    ('\t' or ' ').  
    Zero terminators are not printable (therefore false) */
@@ -33,8 +32,6 @@ char *copy_str(char *inStr, short len);
    For example, tokenize("hello world string") would result in:
      tokens[0] = "hello"
      tokens[1] = "world"
-
-
      tokens[2] = "string" 
      tokens[3] = 0
 */

@@ -14,42 +14,39 @@ int main()
   char** tokens;
   // List* list = init_history();
   
-  // List *history = init_history();
+  List *history = init_history();
   
-  printf("Please type a word to tokenize it. Or press 'q' to exit.");
+  printf("Please type a word to tokenize it. Press 'h' to print history. Press '!' to get specific entry in history. Or press 'q' to exit.");
 
-  while(input[0] != 'q')
-    {
+  while (input[0] != 'q'){
       putchar('$');
       fgets(input, MAX, stdin);
-
-      if (input[0] != 'q'){
-	printf("You typed: %s", input);
-	
-	tokens = tokenize(input);
-	
-	printf("Printing tokens---------");
-	
-	print_tokens(tokens);
-      }
       
-      /* printf("Testing functions with: ", input);
-      int len = count_words(input);
-      printf("Number of words: ", len);
-      char* start = word_start(input);
-      printf("Word start is: ", start);
-      char* end = word_terminator(input);
-      printf("Word end is: ", end);
-
-      // char * copy = copy_str(userIn, 
-      printf("Now tokenizing string");
-      char ** tokens = tokenize(input);
+      printf("You typed: %s", input);
+	
+      tokens = tokenize(input);
+	
+      printf("Printing tokens---------");
+	
       print_tokens(tokens);
-      printf("Now freeing tokens.");
-      free_tokens(tokens);
-      printf("History of tokenizer:");
-      */
-      
-    }
+
+      add_history(history, input);
+
+      if (input[0] == 'h'){
+	print_history(history);
+	}
+
+      if (input[0] == '!'){
+	int id = atoi(input+1);
+	//char *h = get_history(history,atoi(input+1));
+	//char **tokens = tokenize(h);
+	//printf("History: %s\n", h);
+	//printf("History tokenized:\n");
+	char* item = get_history(history,id);
+	printf("History element at %d: %s", id,item);
+	//print_tokens(tokens);
+	//free_tokens(tokens);
+	}
+  }
   return 0;
 }
