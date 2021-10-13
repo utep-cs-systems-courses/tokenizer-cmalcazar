@@ -11,9 +11,7 @@ int main()
 {
 
   char input[MAX];
-  char** tokens;
-  // List* list = init_history();
-  
+  char** tokens;  
   List *history = init_history();
   
   printf("Please type a word to tokenize it. Press 'h' to print history. Press '!' to get specific entry in history. Or press 'q' to exit.");
