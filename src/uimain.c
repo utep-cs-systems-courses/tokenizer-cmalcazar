@@ -35,15 +35,14 @@ int main()
 	}
 
       if (input[0] == '!'){
-	int id = atoi(input+1);
-	//char *h = get_history(history,atoi(input+1));
-	//char **tokens = tokenize(h);
+	char *h = get_history(history,atoi(input+1));
+	char **tokens = tokenize(h);
 	//printf("History: %s\n", h);
 	//printf("History tokenized:\n");
-	char* item = get_history(history,id);
+	//char* item = get_history(history,id);
 	printf("History element at %d: %s", id,item);
-	//print_tokens(tokens);
-	//free_tokens(tokens);
+	print_tokens(tokens);
+	free_tokens(tokens);
 	}
   }
   return 0;

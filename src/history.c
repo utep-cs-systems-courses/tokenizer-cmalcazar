@@ -36,14 +36,13 @@ char *get_history(List *history, int id)
 {
   Item *current = history->root;
 
-  while (current != 0)
-    {
-      if (current->id == id)
-	{
-	  return current->str;
-	}
-      return "Not found";
+  while (current != 0){
+    if (current->id == id){
+      return current->str;
     }
+    current = current->next;
+  }
+  return "Not found";
 }
 
 
@@ -52,24 +51,22 @@ void print_history(List *history)
 {
   Item* current = history->root;
 
-  while (current != NULL)
-    {
-      printf("History item [%d]: %s \n", current->id, current->str);
-      current = current->next;
-    }
+  while (current != NULL){
+    printf("History item [%d]: %s \n", current->id, current->str);
+    current = current->next;
+  }
 }
 
 
-void free_hisotry(List *historyList)
+void free_hisotry(List *history)
 {
   Item *current;
 
-  while (historyList->root != NULL)
-    {
-      current = historyList->root;
-      historyList->root = historyList->root->next;
-      free(current->str);
-      free(current);
+  while (history->root != NULL){
+    current = history->root;
+    history->root = history->root->next;
+    free(current->str);
+    free(current);
     }
-  free(historyList);
+  free(history);
 }

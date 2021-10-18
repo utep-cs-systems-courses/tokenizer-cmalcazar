@@ -4,39 +4,34 @@
 
 int space_char(char c)
 {
-  if (c == '\t' || c == ' ')
-    {
-      return 1;
-    }
+  if (c == '\t' || c == ' ') {
+    return 1;
+  }
   return 0;
 }
 
 int non_space_char(char c)
 {
-  if (c != '\t' || c != ' ' || c != '\0')
-    {
-      return 1;
+  if (c != '\t' || c != ' ' || c != '\0') {
+    return 1;
     }
   return 0;
 }
 
 char *word_start(char *str)
 {
-  while (space_char(*str))
-    {
-      str++;
+  while (space_char(*str)) {
+    str++;
     }
   return str;
 }
 
 char *word_terminator(char *str)
 {
-  while (!space_char(*str))
-    {
-      str++;
-      if (*str == '\0')
-	{
-	  return str;
+  while (!space_char(*str)) {
+    str++;
+      if (*str == '\0'){
+	return str;
 	}
     }
       return str;
@@ -45,11 +40,10 @@ int count_words(char *str)
 {
   //int i = 0;
   int count = 0;
-  while(*str != '\0')
-    {
-      str = word_start(str);
-      str = word_terminator(str);
-      count += 1;
+  while(*str != '\0') {
+    str = word_start(str);
+    str = word_terminator(str);
+    count += 1;
     }
   return count;
 }
@@ -60,9 +54,8 @@ char *copy_str(char *intStr, short len)
 
   int i = 0;
 
-  for (i = 0; i < len; i++)
-    {
-      copy[i] = intStr[i];
+  for (i = 0; i < len; i++) {
+    copy[i] = intStr[i];
     }
 
   copy[i] = '\0';
@@ -76,14 +69,15 @@ char **tokenize(char *str)
    char *start;
    char *end;
    int i;
+   char **t = tokens;
    //start = word_start(str);
    
-   for (i = 0; i < numWords; i++)
-     {
-       str = word_start(str);
-       end = word_terminator(str);
-       tokens[i] = copy_str(str, (end - str));
-       str = end;
+   for (i = 0; i < numWords; i++) {
+     str = word_start(str);
+     end = word_terminator(str);
+     *t = copy_str(str, (end - str));
+     str = end;
+     t++;
      }
    tokens[i] = '\0';
    
@@ -94,9 +88,8 @@ char **tokenize(char *str)
 void print_tokens(char **tokens)
  {
    int i;
-   for (i = 0; tokens[i] != NULL; i++)
-     {
-       printf("\nTokens[%d] : %s\n",i,tokens[i]);               ;
+   for (i = 0; tokens[i] != 0; i++) {
+     printf("\nTokens[%d] : %s\n",i,tokens[i]);               
      }
  }
 
@@ -104,9 +97,8 @@ void print_tokens(char **tokens)
 void free_tokens(char **tokens)
  {
    int i;
-   for (i = 0; tokens[i] != NULL; i++)
-     {
-       free(tokens[i]);
+   for (i = 0; tokens[i] != NULL; i++) {
+     free(tokens[i]);
      }
    free(tokens);
  }
